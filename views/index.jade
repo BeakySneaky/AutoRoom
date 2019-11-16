@@ -1,9 +1,18 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	.main.container-fluid
+		.card
+			.card-header
+			h1 WOL
+			.card-body
+			h5.card-title Sends Wake On Lan Request to my pc.
+			button(class="btn btn-primary" onclick='postWOL()') Wake On Lan Computer 
 
-	button(onclick='postWOL()') Click
 
-	////:)
+
+
+
+
+
+
