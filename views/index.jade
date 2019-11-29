@@ -2,12 +2,13 @@ extends layout
 
 block content
 	.main.container-fluid
-		.card
-			.card-header
-			h1 WOL
-			.card-body
-			h5.card-title Sends Wake On Lan Request to my pc.
-			button(class="btn btn-primary" onclick='postWOL()') Wake On Lan Computer 
+		.row
+			.col-md-4
+				.card.text-white.bg-dark.mb-3.text-center
+					.card-body
+						h1 WOL
+						h5.card-title Sends Wake On Lan Request to my pc.
+						button(class="btn btn-primary" onclick='postWOL()') Wake On Lan Computer 
 
 
 
