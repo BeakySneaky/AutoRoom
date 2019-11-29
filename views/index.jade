@@ -3,13 +3,15 @@ extends layout
 block content
 	.main.container-fluid
 		.row
-			.col-md-4
+			.col-xl-4
 				.card.text-white.bg-dark.mb-3.text-center
 					.card-body
-						h1 WOL
-						h5.card-title Sends Wake On Lan Request to my pc.
-						button(class="btn btn-primary" onclick='postWOL()') Wake On Lan Computer 
+						h1.card-title WOL
+						h5.card-subtitle Sends Wake On Lan Request to my pc.
+						button.btn-lg(class="btn btn-primary" onclick='postWOL()') Wake On Lan Computer 
 
+	// The snackbar
+	#snackbar WOL Sent !
 
 
 
