@@ -13,14 +13,7 @@ router.get('/', (req, res, next) =>
 )
 
 router.post('/WOL', (req, res) =>
-	wol.wake('30-9C-23-02-C8-AB', function(error) {
-		if (error) {
-			console.log(error)
-		}
-		else{
-			console.log('WOL sent !')
-		}
-	})
+	wol.wake('30-9C-23-02-C8-AB')
 )
 
 module.exports = router
