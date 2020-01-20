@@ -1,19 +1,19 @@
-
 var xhttp = new XMLHttpRequest()
 
 function postWOL() {
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			snackBar("WOL request sent !", false)
-		}
-		else{
-			snackBar("WOL request could not be sent.", true)
-		}
-	}
 	xhttp.open('POST', '/WOL', true)
+	snackBar('WOL request sent !', false)
 	xhttp.send()
-
 }
+
+/*xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			
+			
+		} else {
+			snackBar('WOL request could not be sent.', true)
+		}
+	}*/
 
 function snackBar(message, err) {
 	// Get the snackbar DIV
@@ -21,13 +21,12 @@ function snackBar(message, err) {
 	x.innerHTML = message
 	// Add the "show" class to DIV
 	x.className = 'show '
-	if(err){
+	if (err) {
 		x.className += 'snackError '
-	}
-	else{
+	} else {
 		x.className += 'snackSuccess '
 	}
-	
+
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function() {
 		x.className = x.className.replace('show', '')
