@@ -1,7 +1,7 @@
 
+var xhttp = new XMLHttpRequest()
 
 function postWOL() {
-	var xhttp = new XMLHttpRequest()
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			snackBar("WOL request sent !", false)
