@@ -5,35 +5,38 @@ body {
 a {
 	color: #00b7ff;
 }
-h1{
-    font-size: 4rem;
+h1 {
+	font-size: 4rem;
 }
 
-h5{
+h5 {
 	font-size: 2rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+	line-height: 1.2;
 }
 /*CARD SETTINGS */
 
-.card{
+.card {
 	padding: 20px !important;
 }
 
-.card-title, .card-subtitle {
+.card-title,
+.card-subtitle {
 	margin-bottom: 2.5rem;
 }
 
-.btn-lg{
-	font-size: 1.40rem;
+.btn-lg {
+	font-size: 1.4rem;
 }
-
-
-
 
 /* SNACKBAR */
 #snackbar {
@@ -59,12 +62,43 @@ h1, h2, h3, h4, h5, h6 {
 	animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-#snackbar.snackSuccess{
+#snackbar.snackSuccess {
 	background-color: rgba(22, 94, 250, 0.74); /* Black background color */
 }
 
-#snackbar.snackError{
+#snackbar.snackError {
 	background-color: rgba(255, 0, 0, 0.74); /* Black background color */
+}
+
+/*Login*/
+.login-form {
+	width: 300px;
+	margin: 0 auto;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+.login-form h1 {
+	text-align: center;
+	color: #4d4d4d;
+	font-size: 24px;
+	padding: 20px 0 20px 0;
+}
+.login-form input[type='password'],
+.login-form input[type='text'] {
+	width: 100%;
+	padding: 15px;
+	border: 1px solid #dddddd;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+}
+.login-form input[type='submit'] {
+	width: 100%;
+	padding: 15px;
+	background-color: #535b63;
+	border: 0;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-weight: bold;
+	color: #ffffff;
 }
 
 /* Animations to fade the snackbar in and out */

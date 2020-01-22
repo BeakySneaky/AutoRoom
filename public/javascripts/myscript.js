@@ -6,15 +6,6 @@ function postWOL() {
 	xhttp.send()
 }
 
-/*xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			
-			
-		} else {
-			snackBar('WOL request could not be sent.', true)
-		}
-	}*/
-
 function snackBar(message, err) {
 	// Get the snackbar DIV
 	var x = document.getElementById('snackbar')
