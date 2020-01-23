@@ -8,7 +8,6 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   routes = require('./routes/index'),
   session = require('express-session'),
-  mysql = require('mysql'),
   app = express();
 
 // view engine setup
@@ -17,12 +16,19 @@ app.set('view engine', 'jade');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser()); 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/login', routes)
+
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

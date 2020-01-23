@@ -4,22 +4,54 @@ const express = require('express'),
 	router = express.Router()
 
 var wol = require('node-wol')
+var mysql = require('mysql')
+
+//Connect to db
+var con = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'toor'
+})
 
 /* GET home page. */
-router.get('/', (req, res, next) =>
-	res.render('index', {
-		title: 'AutoRoom'
-	})
-)
+router.get('/', function(req, res) {
+	if (req.session.loggedin) {
+		res.render('index', {
+			title: 'AutoRoom'
+		})
+	} else {
+		res.render('login', {
+			title: 'Please Authentify'
+		})
+	}
+})
 
-router.post('/WOL', (req, res) =>
-	wol.wake('30-9C-23-02-C8-AB', function(error) {
-		if (error) {
-			console.log(error)
-		} else {
-			console.log('WOL sent !')
-		}
-	})
-)
+router.post('/auth', function(req, res) {
+	var password = req.body.password
+	if (password) {
+		con.query('SELECT * FROM autoroom.accesses WHERE access_code = ?', password, function(
+			error,
+			results
+		) {
+			if (results.length > 0) {
+				req.session.loggedin = true
+			}
+		})
+	}
+	res.redirect('/')
+	res.end()
+})
+
+router.post('/WOL', function(req, res) {
+	if (req.session.loggedin) {
+		wol.wake('30-9C-23-02-C8-AB', function(error) {
+			if (error) {
+				console.log(error)
+			} else {
+				console.log('WOL sent !')
+			}
+		})
+	}
+})
 
 module.exports = router
