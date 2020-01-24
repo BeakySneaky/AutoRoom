@@ -15,14 +15,18 @@ var con = mysql.createConnection({
 
 /* GET home page. */
 router.get('/', function(req, res) {
+	res.render('login', {
+		title: 'Please Authentify'
+	})
+})
+
+router.get('/interface', function(req, res) {
 	if (req.session.loggedin) {
 		res.render('index', {
 			title: 'AutoRoom'
 		})
 	} else {
-		res.render('login', {
-			title: 'Please Authentify'
-		})
+		res.redirect('/')
 	}
 })
 
@@ -31,15 +35,22 @@ router.post('/auth', function(req, res) {
 	if (password) {
 		con.query('SELECT * FROM autoroom.accesses WHERE access_code = ?', password, function(
 			error,
-			results
+			results,
+			fields
 		) {
+			console.log(results)
 			if (results.length > 0) {
 				req.session.loggedin = true
+				res.redirect('/interface')
+			} else {
+				res.redirect('/')
 			}
+			res.end()
 		})
+	} else {
+		res.redirect('/')
+		res.end()
 	}
-	res.redirect('/')
-	res.end()
 })
 
 router.post('/WOL', function(req, res) {
