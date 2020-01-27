@@ -1,25 +1,25 @@
 'use strict'
 
 const express = require('express'),
-	router = express.Router()
+	router = express.Router(),
+	wol = require('node-wol'),
+	mysql = require('mysql')
 
-var wol = require('node-wol')
-var mysql = require('mysql')
-
-//Connect to db
+/* Connect to db */
 var con = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'toor'
 })
 
-/* GET home page. */
+/* Login Page */
 router.get('/', function(req, res) {
 	res.render('login', {
 		title: 'Please Authentify'
 	})
 })
 
+/* Interface */
 router.get('/interface', function(req, res) {
 	if (req.session.loggedin) {
 		res.render('index', {
@@ -30,6 +30,7 @@ router.get('/interface', function(req, res) {
 	}
 })
 
+/* Check authentication */
 router.post('/auth', function(req, res) {
 	var password = req.body.password
 	if (password) {
@@ -38,7 +39,6 @@ router.post('/auth', function(req, res) {
 			results,
 			fields
 		) {
-			console.log(results)
 			if (results.length > 0) {
 				req.session.loggedin = true
 				res.redirect('/interface')
@@ -53,6 +53,7 @@ router.post('/auth', function(req, res) {
 	}
 })
 
+/* Send WOL packets */
 router.post('/WOL', function(req, res) {
 	if (req.session.loggedin) {
 		wol.wake('30-9C-23-02-C8-AB', function(error) {
