@@ -1,23 +1,41 @@
 var xhttp = new XMLHttpRequest()
 
 function postWOL() {
-	xhttp.open('POST', '/WOL', true)
+	/*xhttp.open('POST', '/WOL', true)
 	sendSnackBar('WOL request sent !', false)
-	xhttp.send()
+	xhttp.send()*/
+	event.preventDefault()
+
+	fetch('/WOL', {
+		method: 'POST'
+	}).then(function() {
+		sendSnackBar('WOL request sent !', false)
+	})
 }
 
 function postAuth() {
-	xhttp.open('POST', '/auth', true)
+	event.preventDefault()
+	let access = document.getElementById('access-code').value
 
-	xhttp.timeout = 400
-
-	xhttp.ontimeout = function() {
-		sendSnackBar('Please enter the correct credentials.', true)
-		xhttp.abort()
-		window.stop()
-	}
-
-	xhttp.send()
+	fetch('/auth', {
+		method: 'POST',
+		redirect: 'follow',
+		body: JSON.stringify({ password: access }),
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(function(response) {
+			return response.json()
+		})
+		.then(function(data) {
+			if (data.message == 'success') {
+				window.location.href = 'http://localhost:3000/interface'
+			} else {
+				sendSnackBar('Please enter the correct credentials.', true)
+			}
+		})
 }
 
 function sendSnackBar(message, err) {

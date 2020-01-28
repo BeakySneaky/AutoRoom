@@ -42,7 +42,7 @@ router.post('/auth', function(req, res) {
 		) {
 			if (results.length > 0) {
 				req.session.loggedin = true
-				res.redirect('/interface')
+				return res.send({ message: 'success' })
 			}
 		})
 	}
@@ -57,6 +57,7 @@ router.post('/WOL', function(req, res) {
 			} else {
 				console.log('WOL sent !')
 			}
+			res.end()
 		})
 	}
 })

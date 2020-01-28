@@ -4,7 +4,7 @@ block content
   .login-form
     h1 Enter access code
     form(action='auth' method='POST')
-      input(type='password' name='password' placeholder='Access Code')
+      input#access-code(type='password' name='password' placeholder='Access Code')
       input(type='submit' onclick='postAuth()')
 
   #snackbar
