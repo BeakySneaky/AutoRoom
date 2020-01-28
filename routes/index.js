@@ -15,7 +15,8 @@ var con = mysql.createConnection({
 /* Login Page */
 router.get('/', function(req, res) {
 	res.render('login', {
-		title: 'Please Authentify'
+		title: 'Please Authentify',
+		valid: req.query.valid
 	})
 })
 
@@ -42,14 +43,8 @@ router.post('/auth', function(req, res) {
 			if (results.length > 0) {
 				req.session.loggedin = true
 				res.redirect('/interface')
-			} else {
-				res.redirect('/')
 			}
-			res.end()
 		})
-	} else {
-		res.redirect('/')
-		res.end()
 	}
 })
 
