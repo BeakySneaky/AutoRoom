@@ -1,9 +1,4 @@
-var xhttp = new XMLHttpRequest()
-
 function postWOL() {
-	/*xhttp.open('POST', '/WOL', true)
-	sendSnackBar('WOL request sent !', false)
-	xhttp.send()*/
 	event.preventDefault()
 
 	fetch('/WOL', {

@@ -44,7 +44,13 @@ router.post('/auth', function(req, res) {
 				req.session.loggedin = true
 				return res.send({ message: 'success' })
 			}
+			else{
+				return res.send({ message: 'password_error' })
+			}
 		})
+	}
+	else{
+		return res.send({ message: 'no_password' })
 	}
 })
 
