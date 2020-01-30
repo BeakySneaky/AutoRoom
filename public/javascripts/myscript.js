@@ -26,7 +26,7 @@ function postAuth() {
 		})
 		.then(function(data) {
 			if (data.message == 'success') {
-				window.location.href = 'http://localhost:3000/interface'
+				window.location.href = '/interface'
 			} else {
 				sendSnackBar('Please enter the correct credentials.', true)
 			}
