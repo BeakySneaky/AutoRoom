@@ -14,10 +14,6 @@ h5 {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
 h6 {
 	margin-bottom: 0.5rem;
 	font-weight: 500;
@@ -35,7 +31,7 @@ h6 {
 }
 
 .btn-lg {
-	font-size: 1.4rem;
+	font-size: 1.5rem;
 }
 
 /* SNACKBAR */
@@ -78,7 +74,7 @@ h6 {
 }
 .login-form h1 {
 	text-align: center;
-	color:#dcdcdc;
+	color: #dcdcdc;
 	font-size: 24px;
 	padding: 20px 0 20px 0;
 }
@@ -98,6 +94,17 @@ h6 {
 	cursor: pointer;
 	font-weight: bold;
 	color: #ffffff;
+}
+
+.error-page {
+	color: #ffffff;
+}
+
+@media(max-width:370px){
+	.btn-lg {
+		font-size: 1rem;
+	}
+	
 }
 
 /* Animations to fade the snackbar in and out */

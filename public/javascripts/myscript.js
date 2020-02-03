@@ -11,7 +11,7 @@ function postWOL() {
 function postAuth() {
 	event.preventDefault()
 	let access = document.getElementById('access-code').value
-
+ 
 	fetch('/auth', {
 		method: 'POST',
 		redirect: 'follow',
