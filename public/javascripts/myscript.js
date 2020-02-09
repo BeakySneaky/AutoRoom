@@ -1,3 +1,4 @@
+//Using fetch API to call /WOL route and send wake on lan packets to the computer
 function postWOL() {
 	event.preventDefault()
 
@@ -7,7 +8,7 @@ function postWOL() {
 		sendSnackBar('WOL request sent !', false)
 	})
 }
-
+//Using fetch API to check authentication
 function postAuth() {
 	event.preventDefault()
 	let access = document.getElementById('access-code').value
